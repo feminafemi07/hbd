@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday ❤️</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Times New Roman', Times, serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    }
+
+    .container{
+      text-align:center;
+      color:white;
+      padding:30px;
+      z-index:2;
+    }
+
+    h1{
+      font-size:4rem;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px white;
+      }
+      to{
+        text-shadow:0 0 25px #fff;
+      }
+    }
+
+    #typing{
+      margin-top:20px;
+      font-size:1.4rem;
+      min-height:60px;
+      line-height:1.6;
+    }
+
+    button{
+      margin-top:25px;
+      padding:12px 25px;
+      border:none;
+      border-radius:30px;
+      background:white;
+      color:#ff4f81;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:scale(1.1);
+    }
+
+    .message{
+      margin-top:25px;
+      font-size:1.3rem;
+      display:none;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-20px;
+      color:white;
+      animation: float 6s linear infinite;
+      opacity:0.8;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(0);
+        opacity:1;
+      }
+      to{
+        transform:translateY(-110vh);
+        opacity:0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Happy Birthday ❤️</h1>
+
+    <p id="typing"></p>
+
+    <button onclick="showMessage()">Open Surprise 🎁</button>
+
+    <div class="message" id="message">
+      You are the most beautiful part of my life 🌸<br><br>
+      May your smile always shine this brightly ❤️
+    </div>
+  </div>
+
+  <script>
+    // Typing Effect
+    const text =
+      "Today is all about you ✨ Wishing you happiness, love, laughter, and endless beautiful moments ❤️";
+
+    let i = 0;
+
+    function typingEffect() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 60);
+      }
+    }
+
+    typingEffect();
+
+    // Surprise Message
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    // Floating Hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+
+      heart.innerHTML = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 250);
+  </script>
+
+</body>
+</html>
