@@ -89,11 +89,12 @@
     }
 
     .heart{
-      position:absolute;
+      position:fixed;
       bottom:-20px;
       color:white;
       animation: float 6s linear infinite;
       opacity:0.8;
+      pointer-events:none;
     }
 
     @keyframes float{
@@ -106,6 +107,10 @@
         opacity:0;
       }
     }
+    html, body{
+  width:100%;
+  overflow-x:hidden;
+}
   </style>
 </head>
 <body>
